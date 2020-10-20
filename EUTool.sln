@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30309.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EUTool", "EUTool.csproj", "{89846AFE-3E11-44A1-A4D3-A5E705715F4D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89846AFE-3E11-44A1-A4D3-A5E705715F4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89846AFE-3E11-44A1-A4D3-A5E705715F4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89846AFE-3E11-44A1-A4D3-A5E705715F4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89846AFE-3E11-44A1-A4D3-A5E705715F4D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {466D4736-6F56-4706-ACE5-F6442F40FAB4}
+	EndGlobalSection
+EndGlobal
