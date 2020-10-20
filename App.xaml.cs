@@ -17,6 +17,7 @@ namespace EUTool
     public partial class App : Application
     {
         private ServiceProvider serviceProvider;
+        private DbCreator dbCreator;
 
         public App()
         {
@@ -33,6 +34,10 @@ namespace EUTool
 
         private void OnStartup(object sender, StartupEventArgs e)
         {
+            dbCreator.createDbFile();
+            dbCreator.createTable();
+            dbCreator.fillTable();
+
             var mainWindow = serviceProvider.GetService<MainWindow>();
             mainWindow.Show();
 
