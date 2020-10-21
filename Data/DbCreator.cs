@@ -6,22 +6,26 @@ namespace EUTool.Data
 {
     public class DbCreator
     {
-        SQLiteConnection dbConnection = new SQLiteConnection("Data Source = EUToolDevDB.db");
+        static string WORKING_DIRECTORY = Environment.CurrentDirectory;
+        static string MAIN_PROJECT_DIRECTORY = Directory.GetParent(WORKING_DIRECTORY).Parent.Parent.FullName;
+        static string DB_PATH = MAIN_PROJECT_DIRECTORY + "\\db\\";
+        static string DATABASE_NAME = "BazaTestowaSQlite.db";
+        public static string DATABASE_FILE_PATH;
+
+        SQLiteConnection dbConnection = new SQLiteConnection("Data Source = " + DB_PATH + DATABASE_NAME + ";Version=3;New=True;Compress=True;");
         SQLiteCommand command = new SQLiteCommand();
         string sqlQuery;
-        string dbPath = Environment.CurrentDirectory + "\\Data";
-        string dbFilePath;
 
         public void createDbFile()
         {
-            if (!string.IsNullOrEmpty(dbPath) && !Directory.Exists(dbPath))
-                Directory.CreateDirectory(dbPath);
-            dbFilePath = dbPath + "\\EUToolDevDB.db";
+            if (!string.IsNullOrEmpty(DB_PATH) && !Directory.Exists(DB_PATH))
+                Directory.CreateDirectory(DB_PATH);
 
-            if (!File.Exists(dbFilePath))
+            DATABASE_FILE_PATH = DB_PATH + DATABASE_NAME;
+
+            if (!File.Exists(DATABASE_FILE_PATH))
             {
-
-                SQLiteConnection.CreateFile("EUToolDevDB.db");
+                SQLiteConnection.CreateFile(DATABASE_NAME);
             }
         }
 
@@ -37,7 +41,7 @@ namespace EUTool.Data
         public bool checkIfExist(string tableName)
         {
             command.CommandText = ("SELECT name FROM sqlite_master WHERE name ='" + tableName + "'");
-            createConnectionToDatabase();
+           /* createConnectionToDatabase();*/
             var result = command.ExecuteScalar();
 
             return result != null && result.ToString() == tableName ? true : false;
@@ -63,6 +67,9 @@ namespace EUTool.Data
             if (!checkIfTableContainsData("Auctions"))
             {
                 sqlQuery = "INSERT INTO Auctions (NAME,Quantity, Price, Tax, Value) values ('Belkar Ingot', 1000, 1654.50,0.54,3212)";
+                executeQuery(sqlQuery);
+
+                sqlQuery = "INSERT INTO Auctions (NAME,Quantity, Price, Tax, Value) values ('Lysterium Ingot', 3121, 1878.50,1.54,9999)";
                 executeQuery(sqlQuery);
             }
         }
