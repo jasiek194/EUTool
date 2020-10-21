@@ -1,15 +1,19 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
+using System.IO;
 using System.Text;
 
 namespace EUTool.Data
 {
     public class AuctionDbContext: DbContext
     {
+
         public AuctionDbContext(DbContextOptions<AuctionDbContext> options): base(options)
         {
-            Database.EnsureCreated();
+
+            /* Database.EnsureCreated();*/
         }
 
         public DbSet<Auction> Auctions { get; set; }

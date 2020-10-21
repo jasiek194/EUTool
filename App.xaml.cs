@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Data.SQLite;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,7 +19,12 @@ namespace EUTool
     public partial class App : Application
     {
         private ServiceProvider serviceProvider;
-        private DbCreator dbCreator;
+        private DbCreator dbCreator = new DbCreator();
+
+/*        string dbPath = Environment.CurrentDirectory + "\\Data";
+        string dbFilePath;*/
+
+
 
         public App()
         {
@@ -30,10 +37,21 @@ namespace EUTool
             services.AddSingleton<MainWindow>();
 
             serviceProvider = services.BuildServiceProvider();
+
         }
 
         private void OnStartup(object sender, StartupEventArgs e)
         {
+
+            /*            if (!string.IsNullOrEmpty(dbPath) && !Directory.Exists(dbPath))
+                            Directory.CreateDirectory(dbPath);
+                        dbFilePath = dbPath + "\\EUToolDevDB.db";
+
+                        if (!File.Exists(dbFilePath))
+                        {
+
+                            SQLiteConnection.CreateFile("EUToolDevDB.db");
+                        }*/
             dbCreator.createDbFile();
             dbCreator.createTable();
             dbCreator.fillTable();
