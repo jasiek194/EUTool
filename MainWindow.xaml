@@ -6,9 +6,13 @@
         xmlns:local="clr-namespace:EUTool"
         mc:Ignorable="d" Background="Azure"
         Title="MainWindow" Height="600" Width="950">
-    <Grid>
+    <Grid x:Name="MainPage">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="17*"/>
+            <RowDefinition Height="567*"/>
+        </Grid.RowDefinitions>
 
-        <DataGrid Grid.Row="1" AutoGenerateColumns="False" Margin="5" Name="AuctionDG" IsReadOnly="True">
+        <DataGrid AutoGenerateColumns="False" Margin="142,0,0,261" Name="AuctionDG" IsReadOnly="True" Grid.RowSpan="2">
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
@@ -19,5 +23,15 @@
             </DataGrid.Columns>
 
         </DataGrid>
+        <Grid x:Name="menuPanel" Margin="0,0,808,0" Grid.RowSpan="2" Background="#FF2A9D8F">
+            <Button x:Name="huntingBtn" Content="Hunting" HorizontalAlignment="Center" Margin="0,181,0,0" VerticalAlignment="Top" Background="{x:Null}" Height="42" Width="142" FontSize="24" Foreground="#FFE9C46A" FontWeight="Bold" BorderBrush="{x:Null}"/>
+            <Button x:Name="miningBtn" Content="Mining" HorizontalAlignment="Center" Margin="0,134,0,0" VerticalAlignment="Top" Background="{x:Null}" Height="42" Width="142" FontSize="24" Foreground="#FFE9C46A" FontWeight="Bold" BorderBrush="{x:Null}"/>
+            <Button x:Name="dataBtn" Content="Data" HorizontalAlignment="Center" Margin="0,237,0,0" VerticalAlignment="Top" Background="{x:Null}" Height="42" Width="142" FontSize="24" Foreground="#FFE9C46A" FontWeight="Bold" BorderBrush="{x:Null}"/>
+            <Button x:Name="marketBtn" Content="Market" HorizontalAlignment="Center" Margin="0,87,0,0" VerticalAlignment="Top" Background="{x:Null}" Height="42" Width="142" FontSize="24" Foreground="#FFE9C46A" FontWeight="Bold" BorderBrush="{x:Null}"/>
+            <Button x:Name="analyticsBtn" Content="Analytics" HorizontalAlignment="Center" Margin="0,292,0,0" VerticalAlignment="Top" Background="{x:Null}" Height="42" Width="142" FontSize="24" Foreground="#FFE9C46A" FontWeight="Bold" BorderBrush="{x:Null}"/>
+        </Grid>
+        <Grid x:Name="valueGrid" Grid.Row="1" Margin="142,306,0,0">
+            <Frame x:Name="Main"/>
+        </Grid>
     </Grid>
 </Window>
