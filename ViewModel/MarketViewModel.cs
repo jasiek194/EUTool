@@ -6,7 +6,7 @@ namespace EUTool.ViewModel
 {
     public class MarketViewModel
     {
-        AuctionDbContext dbContext = new AuctionDbContext();
+        AuctionDbContext dbContext;
         MarketView marketView = new MarketView();
 
         public MarketViewModel(AuctionDbContext dbContext)

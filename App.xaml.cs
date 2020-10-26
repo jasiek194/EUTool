@@ -1,4 +1,5 @@
 ﻿using EUTool.Data;
+using EUTool.ViewModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows;

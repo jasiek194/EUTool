@@ -11,8 +11,9 @@ namespace EUTool
     public partial class MainWindow : Window
     {
         AuctionDbContext dbContext;
-        public MainWindow()
+        public MainWindow(AuctionDbContext dbContext)
         {
+            this.dbContext = dbContext;
             InitializeComponent();
         }
 
