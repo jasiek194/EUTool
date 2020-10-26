@@ -17,6 +17,7 @@ namespace EUTool
         public App()
         {
             ServiceCollection services = new ServiceCollection();
+
             services.AddDbContext<AuctionDbContext>(option =>
             {
                 option.UseSqlite("Data Source = " + DbCreator.DATABASE_FILE_PATH);

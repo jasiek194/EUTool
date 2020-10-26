@@ -4,34 +4,48 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EUTool"
+        xmlns:viewmodels="clr-namespace:EUTool.ViewModel"
+        xmlns:view="clr-namespace:EUTool.View"
         mc:Ignorable="d" Background="Azure"
         Title="MainWindow" Height="600" Width="950">
+    <Window.Resources>
+        <DataTemplate x:Name="marketViewTemplate" DataType="{x:Type viewmodels:MarketViewModel}">
+            <view:MarketView DataContext="{Binding}"/>
+        </DataTemplate>
+           
+    </Window.Resources>
     <Grid x:Name="MainPage">
+
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
         <Grid.RowDefinitions>
-            <RowDefinition Height="17*"/>
-            <RowDefinition Height="567*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <DataGrid AutoGenerateColumns="False" Margin="142,0,0,261" Name="AuctionDG" IsReadOnly="True" Grid.RowSpan="2">
+        <DockPanel Background="#FF2A9D8F" Grid.Row="0" Grid.Column="0" Grid.RowSpan="5">
+            <StackPanel>
 
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}"/>
-                <DataGridTextColumn Header="Price" Binding="{Binding Price}"/>
-                <DataGridTextColumn Header="Tax" Binding="{Binding Tax}"/>
-                <DataGridTextColumn Header="Value" Binding="{Binding Value}"/>
-            </DataGrid.Columns>
+                <Button x:Name="huntingBtn" Content="Hunting"/>
+                <Button x:Name="miningBtn" Content="Mining"/>
+                <Button x:Name="dataBtn" Content="Data"/>
+                <Button x:Name="marketBtn" Content="Market" Click="MarketMenu_Clicked"/>
+                <Button x:Name="analyticsBtn" Content="Analytics"/>
 
-        </DataGrid>
-        <Grid x:Name="menuPanel" Margin="0,0,808,0" Grid.RowSpan="2" Background="#FF2A9D8F">
-            <Button x:Name="huntingBtn" Content="Hunting" HorizontalAlignment="Center" Margin="0,181,0,0" VerticalAlignment="Top" Background="{x:Null}" Height="42" Width="142" FontSize="24" Foreground="#FFE9C46A" FontWeight="Bold" BorderBrush="{x:Null}"/>
-            <Button x:Name="miningBtn" Content="Mining" HorizontalAlignment="Center" Margin="0,134,0,0" VerticalAlignment="Top" Background="{x:Null}" Height="42" Width="142" FontSize="24" Foreground="#FFE9C46A" FontWeight="Bold" BorderBrush="{x:Null}"/>
-            <Button x:Name="dataBtn" Content="Data" HorizontalAlignment="Center" Margin="0,237,0,0" VerticalAlignment="Top" Background="{x:Null}" Height="42" Width="142" FontSize="24" Foreground="#FFE9C46A" FontWeight="Bold" BorderBrush="{x:Null}"/>
-            <Button x:Name="marketBtn" Content="Market" HorizontalAlignment="Center" Margin="0,87,0,0" VerticalAlignment="Top" Background="{x:Null}" Height="42" Width="142" FontSize="24" Foreground="#FFE9C46A" FontWeight="Bold" BorderBrush="{x:Null}"/>
-            <Button x:Name="analyticsBtn" Content="Analytics" HorizontalAlignment="Center" Margin="0,292,0,0" VerticalAlignment="Top" Background="{x:Null}" Height="42" Width="142" FontSize="24" Foreground="#FFE9C46A" FontWeight="Bold" BorderBrush="{x:Null}"/>
-        </Grid>
-        <Grid x:Name="valueGrid" Grid.Row="1" Margin="142,306,0,0">
-            <Frame x:Name="Main"/>
-        </Grid>
+            </StackPanel>
+
+        </DockPanel>
+
+        <ContentControl Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="5"  Content="{Binding}"/>
     </Grid>
 </Window>

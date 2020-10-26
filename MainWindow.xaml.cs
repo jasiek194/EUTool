@@ -1,4 +1,5 @@
 ﻿using EUTool.Data;
+using EUTool.ViewModel;
 using System.Linq;
 using System.Windows;
 
@@ -10,16 +11,14 @@ namespace EUTool
     public partial class MainWindow : Window
     {
         AuctionDbContext dbContext;
-        public MainWindow(AuctionDbContext dbContext)
+        public MainWindow()
         {
-            this.dbContext = dbContext;
             InitializeComponent();
-            GetAuctions();
         }
 
-        private void GetAuctions()
+        private void MarketMenu_Clicked(object sender, RoutedEventArgs e)
         {
-            AuctionDG.ItemsSource = dbContext.Auctions.ToList();
+            DataContext = new MarketViewModel(dbContext);
         }
     }
 }
