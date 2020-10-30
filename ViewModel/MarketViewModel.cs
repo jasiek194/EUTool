@@ -1,6 +1,8 @@
-﻿using EUTool.Data;
+﻿using System.Collections.Generic;
+using EUTool.Data;
 using EUTool.View;
 using System.Linq;
+using System.Windows.Documents;
 
 namespace EUTool.ViewModel
 {
@@ -8,6 +10,8 @@ namespace EUTool.ViewModel
     {
         AuctionDbContext dbContext;
         MarketView marketView = new MarketView();
+
+        public IEnumerable<Auction> Auctions { get; set; }
 
         public MarketViewModel(AuctionDbContext dbContext)
         {
@@ -17,7 +21,8 @@ namespace EUTool.ViewModel
 
         private void GetAuctions()
         {
-            marketView.AuctionDG.ItemsSource = dbContext.Auctions.ToList();
+            Auctions = dbContext.Auctions.ToList();
+            marketView.AuctionDG.ItemsSource = Auctions;
         }
     }
 }
