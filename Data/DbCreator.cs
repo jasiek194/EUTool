@@ -79,5 +79,7 @@ namespace EUTool.Data
             command.Connection = dbConnection;
             dbConnection.Open();
         }
+
+        public void CloseConnection() => dbConnection.Close();
     }
 }

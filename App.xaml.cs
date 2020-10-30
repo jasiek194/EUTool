@@ -19,15 +19,12 @@ namespace EUTool
         {
             ServiceCollection services = new ServiceCollection();
 
-            services.AddDbContext<AuctionDbContext>(option =>
-            {
-                option.UseSqlite("Data Source = " + DbCreator.DATABASE_FILE_PATH);
-            });
+            var connectionString = "Data Source = " + DbCreator.DATABASE_FILE_PATH;
+            services.AddDbContext<AuctionDbContext>(option => { option.UseSqlite(connectionString); });
 
             services.AddSingleton<MainWindow>();
 
             serviceProvider = services.BuildServiceProvider();
-
         }
 
         private void OnStartup(object sender, StartupEventArgs e)
@@ -36,11 +33,10 @@ namespace EUTool
             dbCreator.createConnectionToDatabase();
             dbCreator.createTable();
             dbCreator.fillTable();
+            dbCreator.CloseConnection();
 
             var mainWindow = serviceProvider.GetService<MainWindow>();
             mainWindow.Show();
-
         }
-        
     }
 }
