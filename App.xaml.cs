@@ -29,7 +29,6 @@ namespace EUTool
 
         private void OnStartup(object sender, StartupEventArgs e)
         {
-            dbCreator.createDbFile();
             dbCreator.createConnectionToDatabase();
             dbCreator.createTable();
             dbCreator.fillTable();
